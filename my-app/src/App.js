@@ -1,9 +1,9 @@
 import './styles/App.css';
-import Navbar from './components/Navbar';
+import BackgroundVideo from './components/BackgroundVideo';
 function App() {
   return (
     <>
-      <Navbar></Navbar>
+      <BackgroundVideo/>
     </>
   );
 }
