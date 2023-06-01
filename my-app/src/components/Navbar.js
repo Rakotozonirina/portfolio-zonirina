@@ -1,9 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from '../assets/photo-logo/my-logo.svg';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import '../styles/Navbar.css';
-
 const Navbar = () => {
 return (
     <>
