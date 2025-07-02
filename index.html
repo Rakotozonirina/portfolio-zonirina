@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
   <title>Portfolio - RAKOTOMANANA Andriamihaja Zo Nirina</title>
   <style>
     :root {
@@ -135,6 +136,15 @@
       margin-bottom: 2rem;
       opacity: 0.9;
       animation: slideUp 1s ease 0.2s both;
+    }
+
+    .overlay{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.15);
     }
 
     .hero .description {
@@ -422,16 +432,33 @@
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
 
-    .project-image {
+    .project-image-1 {
       height: 200px;
-      background: var(--gradient);
+      background: url("./Website-QG.png") no-repeat center center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-size: 3rem;
     }
-
+  .project-image-2 {
+      height: 200px;
+      background: url("./Monteverde-Benvenuto.png") no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+     .project-image-3 {
+      height: 200px;
+      background: url("./PANEL–Zo-Nirina.png") no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
     .project-content {
       padding: 2rem;
     }
@@ -440,6 +467,7 @@
       color: var(--primary-color);
       font-size: 1.3rem;
       margin-bottom: 1rem;
+      text-decoration: none;
     }
 
     .project-tech {
@@ -632,8 +660,9 @@
 
   <!-- Hero Section -->
   <section class="hero" id="home">
+    <div class="overlay"></div>
     <div class="hero-content">
-      <h1>Zo Nirina Rakotomanana</h1>
+      <h1>Rakotomanana Zo Nirina</h1>
       <p class="subtitle">Développeur Front End & Web Designer</p>
       <p class="description">
         Passionné par la création d'expériences web modernes et esthétiques. 
@@ -667,7 +696,7 @@
               <span class="stat-label">Années d'expérience</span>
             </div>
             <div class="stat">
-              <span class="stat-number">15+</span>
+              <span class="stat-number">2+</span>
               <span class="stat-label">Projets réalisés</span>
             </div>
             <div class="stat">
@@ -696,7 +725,7 @@
             <li>JavaScript (ES6+)</li>
             <li>React.js</li>
             <li>Tailwind CSS</li>
-            <li>SASS/SCSS</li>
+            <li>WordPress</li>
             <li>Responsive Design</li>
           </ul>
         </div>
@@ -705,7 +734,7 @@
           <h3>Design & UI/UX</h3>
           <ul class="skill-list">
             <li>Figma</li>
-            <li>Adobe XD</li>
+            <li>Lunacy</li>
             <li>Templates Design</li>
             <li>User Interface Design</li>
             <li>Prototyping</li>
@@ -728,7 +757,6 @@
         <div class="skill-category">
           <h3>Soft Skills</h3>
           <ul class="skill-list">
-            <li>Gestion de projet</li>
             <li>Autonomie</li>
             <li>Gestion du temps</li>
             <li>Communication</li>
@@ -798,9 +826,9 @@
       <h2 class="section-title">Projets Récents</h2>
       <div class="projects-grid">
         <div class="project-card">
-          <div class="project-image">🌐</div>
+          <div class="project-image-1"></div>
           <div class="project-content">
-            <h3 class="project-title">Site Catalogue E-commerce</h3>
+            <a href="https://cataloge-restaurant.netlify.app/" class="project-title">Site Catalogue E-commerce</a>
             <p>Développement d'un site catalogue responsive pour ANIMA TECHNOLOGIE avec une interface moderne et intuitive.</p>
             <div class="project-tech">
               <span class="tech-tag">React</span>
@@ -811,9 +839,9 @@
         </div>
         
         <div class="project-card">
-          <div class="project-image">💼</div>
+          <div class="project-image-2"></div>
           <div class="project-content">
-            <h3 class="project-title">Interface Client International</h3>
+            <a href="https://github.com/Rakotozonirina/reservation-terrain" class="project-title">Interface Client International</a>
             <p>Création d'interfaces responsives pour un client italien avec focus sur l'optimisation et le débogage.</p>
             <div class="project-tech">
               <span class="tech-tag">HTML5</span>
@@ -824,14 +852,14 @@
         </div>
         
         <div class="project-card">
-          <div class="project-image">🎨</div>
+          <div class="project-image-3"></div>
           <div class="project-content">
-            <h3 class="project-title">Templates Modernes</h3>
+            <a href="https://staging.madagasy.com/panel-zo-nirina" class="project-title">Templates Modernes</a>
             <p>Conception et développement de templates responsives modernes pour différents secteurs d'activité.</p>
             <div class="project-tech">
-              <span class="tech-tag">Figma</span>
-              <span class="tech-tag">Tailwind</span>
-              <span class="tech-tag">React</span>
+              <span class="tech-tag">WordPress</span>
+              <span class="tech-tag">HTML/CSS</span>
+              <span class="tech-tag">JavaScript</span>
             </div>
           </div>
         </div>
@@ -868,7 +896,7 @@
             <div class="contact-icon">💼</div>
             <div>
               <strong>LinkedIn</strong><br>
-              <a href="https://linkedin.com/in/zo-nirina-rakotomanana-5276ab236" target="_blank" style="color: var(--accent-color);">Zo Nirina Rakotomanana</a>
+              <a href="https://www.linkedin.com/in/rakotomanana-andriamihaja-zo-nirina-5276ab236" target="_blank" style="color: var(--accent-color);">Zo Nirina Rakotomanana</a>
             </div>
           </div>
           
