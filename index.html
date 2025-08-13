@@ -945,7 +945,15 @@
     </div>
   </footer>
 
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
   <script>
+    // Initialize EmailJS
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    })();
+
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
@@ -989,7 +997,7 @@
       observer.observe(el);
     });
 
-    // Contact form handling
+    // Contact form handling with EmailJS
     document.querySelector('.contact-form form').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -1002,22 +1010,106 @@
       
       // Simple validation
       if (!name || !email || !subject || !message) {
-        alert('Veuillez remplir tous les champs.');
+        showNotification('Veuillez remplir tous les champs.', 'error');
         return;
       }
       
-      // Create mailto link
-      const mailtoLink = `mailto:tomzonirina@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showNotification('Veuillez entrer une adresse email valide.', 'error');
+        return;
+      }
       
-      // Open email client
-      window.location.href = mailtoLink;
+      // Show loading state
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Envoi en cours...';
+      submitBtn.disabled = true;
       
-      // Reset form
-      this.reset();
+      // Prepare template parameters
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
+        to_email: 'tomzonirina@gmail.com'
+      };
       
-      // Show success message
-      alert('Merci pour votre message ! Votre client email va s\'ouvrir.');
+      // Send email using EmailJS
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          showNotification('Message envoyé avec succès ! Je vous répondrai bientôt.', 'success');
+          
+          // Reset form
+          document.querySelector('.contact-form form').reset();
+        })
+        .catch(function(error) {
+          console.log('FAILED...', error);
+          showNotification('Erreur lors de l\'envoi. Veuillez réessayer ou me contacter directement.', 'error');
+          
+          // Fallback to mailto
+          const mailtoLink = `mailto:tomzonirina@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+          window.location.href = mailtoLink;
+        })
+        .finally(function() {
+          // Reset button state
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        });
     });
+    
+    // Notification system
+    function showNotification(message, type = 'info') {
+      // Remove existing notifications
+      const existingNotification = document.querySelector('.notification');
+      if (existingNotification) {
+        existingNotification.remove();
+      }
+      
+      // Create notification element
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.textContent = message;
+      
+      // Add styles
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 10000;
+        max-width: 400px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        ${type === 'success' ? 'background: #10b981;' : ''}
+        ${type === 'error' ? 'background: #ef4444;' : ''}
+        ${type === 'info' ? 'background: #3b82f6;' : ''}
+      `;
+      
+      // Add to page
+      document.body.appendChild(notification);
+      
+      // Animate in
+      setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.remove();
+          }
+        }, 300);
+      }, 5000);
+    }
 
     // Add typing effect to hero subtitle
     function typeWriter(element, text, speed = 100) {
