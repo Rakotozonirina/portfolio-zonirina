@@ -15,6 +15,26 @@
       --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --gradient: linear-gradient(135deg, #0d9488 0%, #22d3ee 100%);
     }
+    
+    /* Language Toggle Button */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 2rem;
+    }
+    
+    .lang-toggle:hover {
+      background: var(--accent-color);
+      transform: translateY(-2px);
+    }
 
     * {
       margin: 0;
@@ -589,6 +609,19 @@
       .nav-links {
         display: none;
       }
+      
+      .nav-container {
+        justify-content: space-between;
+      }
+      
+      .nav-right {
+        display: flex;
+        align-items: center;
+      }
+      
+      .lang-toggle {
+        margin-left: 0;
+      }
 
       .hero h1 {
         font-size: 2.5rem;
@@ -647,15 +680,18 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <div class="logo">ZN</div>
-      <ul class="nav-links">
-        <li><a href="#home">Accueil</a></li>
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#skills">Compétences</a></li>
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#projects">Projets</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="https://zonirina.tawk.help/article/skill-of-zo-nirina">Support</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#home" data-i18n="nav.home">Accueil</a></li>
+          <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="https://zonirina.tawk.help/article/skill-of-zo-nirina">Support</a></li>
+          <button class="lang-toggle" id="langToggle">EN</button>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -664,14 +700,14 @@
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>Rakotomanana Zo Nirina</h1>
-      <p class="subtitle">Développeur Front End & Web Designer</p>
-      <p class="description">
+      <p class="subtitle" data-i18n="hero.subtitle">Développeur Front End & Web Designer</p>
+      <p class="description" data-i18n="hero.description">
         Passionné par la création d'expériences web modernes et esthétiques. 
         4 ans d'expérience dans le développement d'applications performantes et responsives.
       </p>
       <div class="cta-buttons">
-        <a href="#projects" class="btn btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn btn-secondary">Me contacter</a>
+        <a href="#projects" class="btn btn-primary" data-i18n="hero.cta.projects">Voir mes projets</a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta.contact">Me contacter</a>
       </div>
     </div>
   </section>
@@ -679,32 +715,32 @@
   <!-- About Section -->
   <section class="section about" id="about">
     <div class="container">
-      <h2 class="section-title">À propos de moi</h2>
+      <h2 class="section-title" data-i18n="about.title">À propos de moi</h2>
       <div class="about-content">
         <div>
           <div class="about-text">
-            <p>Développeur Front End et Web Designer passionné avec 4 ans d'expérience dans la création d'applications web modernes, performantes et esthétiques.</p>
+            <p data-i18n="about.text1">Développeur Front End et Web Designer passionné avec 4 ans d'expérience dans la création d'applications web modernes, performantes et esthétiques.</p>
             
-            <p>Toujours à la pointe des nouvelles tendances en matière de design et de technologies web, je relève avec enthousiasme les défis créatifs et techniques.</p>
+            <p data-i18n="about.text2">Toujours à la pointe des nouvelles tendances en matière de design et de technologies web, je relève avec enthousiasme les défis créatifs et techniques.</p>
           </div>
         </div>
         <div class="floating">
           <div class="stats">
             <div class="stat">
               <span class="stat-number">4+</span>
-              <span class="stat-label">Années d'expérience</span>
+              <span class="stat-label" data-i18n="stats.years">Années d'expérience</span>
             </div>
             <div class="stat">
               <span class="stat-number">2+</span>
-              <span class="stat-label">Projets réalisés</span>
+              <span class="stat-label" data-i18n="stats.projects">Projets réalisés</span>
             </div>
             <div class="stat">
               <span class="stat-number">100%</span>
-              <span class="stat-label">Satisfaction client</span>
+              <span class="stat-label" data-i18n="stats.satisfaction">Satisfaction client</span>
             </div>
             <div class="stat">
               <span class="stat-number">24/7</span>
-              <span class="stat-label">Support</span>
+              <span class="stat-label" data-i18n="stats.support">Support</span>
             </div>
           </div>
         </div>
@@ -715,7 +751,7 @@
   <!-- Skills Section -->
   <section class="section skills" id="skills">
     <div class="container">
-      <h2 class="section-title">Compétences</h2>
+      <h2 class="section-title" data-i18n="skills.title">Compétences</h2>
       <div class="skills-grid">
         <div class="skill-category">
           <h3>Frontend Development</h3>
@@ -742,7 +778,7 @@
         </div>
         
         <div class="skill-category">
-          <h3>Outils & Technologies</h3>
+          <h3 data-i18n="skills.tools.title">Outils & Technologies</h3>
           <ul class="skill-list">
             <li>Git & GitHub</li>
             <li>GitLab</li>
@@ -754,13 +790,13 @@
         </div>
         
         <div class="skill-category">
-          <h3>Soft Skills</h3>
+          <h3 data-i18n="skills.soft.title">Soft Skills</h3>
           <ul class="skill-list">
-            <li>Autonomie</li>
-            <li>Gestion du temps</li>
-            <li>Communication</li>
-            <li>Travail d'équipe</li>
-            <li>Problem Solving</li>
+            <li data-i18n="skills.soft.autonomy">Autonomie</li>
+            <li data-i18n="skills.soft.timeManagement">Gestion du temps</li>
+            <li data-i18n="skills.soft.communication">Communication</li>
+            <li data-i18n="skills.soft.teamwork">Travail d'équipe</li>
+            <li data-i18n="skills.soft.problemSolving">Problem Solving</li>
           </ul>
         </div>
       </div>
@@ -770,14 +806,14 @@
   <!-- Experience Section -->
   <section class="section experience" id="experience">
     <div class="container">
-      <h2 class="section-title">Expérience Professionnelle</h2>
+      <h2 class="section-title" data-i18n="experience.title">Expérience Professionnelle</h2>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date">Juin 2025 - Aujourd'hui</div>
-            <h3 class="timeline-title">Apprenti Web Designer</h3>
-            <p class="timeline-company">Madagasy.com, Mahajanga</p>
-            <p class="timeline-description">
+            <div class="timeline-date" data-i18n="experience.job1.date">Juin 2025 - Aujourd'hui</div>
+            <h3 class="timeline-title" data-i18n="experience.job1.title">Apprenti Web Designer</h3>
+            <p class="timeline-company" data-i18n="experience.job1.company">Madagasy.com, Mahajanga</p>
+            <p class="timeline-description" data-i18n="experience.job1.description">
               Conception de templates modernes et responsives, formation en gestion de la relation client et stratégies commerciales, participation au développement commercial.
             </p>
           </div>
@@ -785,10 +821,10 @@
         
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date">Mars 2024 - Juin 2025</div>
-            <h3 class="timeline-title">Développeur Front End</h3>
-            <p class="timeline-company">Fy-Tech Mahajanga</p>
-            <p class="timeline-description">
+            <div class="timeline-date" data-i18n="experience.job2.date">Mars 2024 - Juin 2025</div>
+            <h3 class="timeline-title" data-i18n="experience.job2.title">Développeur Front End</h3>
+            <p class="timeline-company" data-i18n="experience.job2.company">Fy-Tech Mahajanga</p>
+            <p class="timeline-description" data-i18n="experience.job2.description">
               Développement et optimisation de sites web, formation de jeunes sur les métiers numériques, animation d'événements technologiques.
             </p>
           </div>
@@ -796,10 +832,10 @@
         
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date">Sept - Oct 2024</div>
-            <h3 class="timeline-title">Développeur Front End</h3>
-            <p class="timeline-company">Eli, Italie (Freelance)</p>
-            <p class="timeline-description">
+            <div class="timeline-date" data-i18n="experience.job3.date">Sept - Oct 2024</div>
+            <h3 class="timeline-title" data-i18n="experience.job3.title">Développeur Front End</h3>
+            <p class="timeline-company" data-i18n="experience.job3.company">Eli, Italie (Freelance)</p>
+            <p class="timeline-description" data-i18n="experience.job3.description">
               Développement d'interfaces responsives, optimisation du design et débogage pour un client international.
             </p>
           </div>
@@ -807,10 +843,10 @@
         
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date">Août - Sept 2023</div>
-            <h3 class="timeline-title">Développeur Front End</h3>
-            <p class="timeline-company">ANIMA TECHNOLOGIE</p>
-            <p class="timeline-description">
+            <div class="timeline-date" data-i18n="experience.job4.date">Août - Sept 2023</div>
+            <h3 class="timeline-title" data-i18n="experience.job4.title">Développeur Front End</h3>
+            <p class="timeline-company" data-i18n="experience.job4.company">ANIMA TECHNOLOGIE</p>
+            <p class="timeline-description" data-i18n="experience.job4.description">
               Développement d'un site catalogue responsive avec React, optimisation de l'expérience utilisateur.
             </p>
           </div>
@@ -822,13 +858,13 @@
   <!-- Projects Section -->
   <section class="section projects" id="projects">
     <div class="container">
-      <h2 class="section-title">Projets Récents</h2>
+      <h2 class="section-title" data-i18n="projects.title">Projets Récents</h2>
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-image-1"></div>
           <div class="project-content">
-            <a href="https://cataloge-restaurant.netlify.app/" class="project-title">Site Catalogue E-commerce</a>
-            <p>Développement d'un site catalogue responsive pour ANIMA TECHNOLOGIE avec une interface moderne et intuitive.</p>
+            <a href="https://cataloge-restaurant.netlify.app/" class="project-title" data-i18n="projects.project1.title">Site Catalogue E-commerce</a>
+            <p data-i18n="projects.project1.description">Développement d'un site catalogue responsive pour ANIMA TECHNOLOGIE avec une interface moderne et intuitive.</p>
             <div class="project-tech">
               <span class="tech-tag">React</span>
               <span class="tech-tag">CSS3</span>
@@ -840,8 +876,8 @@
         <div class="project-card">
           <div class="project-image-2"></div>
           <div class="project-content">
-            <a href="https://github.com/Rakotozonirina/reservation-terrain" class="project-title">Interface Client International</a>
-            <p>Création d'interfaces responsives pour un client italien avec focus sur l'optimisation et le débogage.</p>
+            <a href="https://github.com/Rakotozonirina/reservation-terrain" class="project-title" data-i18n="projects.project2.title">Interface Client International</a>
+            <p data-i18n="projects.project2.description">Création d'interfaces responsives pour un client italien avec focus sur l'optimisation et le débogage.</p>
             <div class="project-tech">
               <span class="tech-tag">HTML5</span>
               <span class="tech-tag">JavaScript</span>
@@ -853,8 +889,8 @@
         <div class="project-card">
           <div class="project-image-3"></div>
           <div class="project-content">
-            <a href="#" class="project-title">Templates Modernes</a>
-            <p>Conception et développement de templates responsives modernes pour différents secteurs d'activité.</p>
+            <a href="#" class="project-title" data-i18n="projects.project3.title">Templates Modernes</a>
+            <p data-i18n="projects.project3.description">Conception et développement de templates responsives modernes pour différents secteurs d'activité.</p>
             <div class="project-tech">
               <span class="tech-tag">WordPress</span>
               <span class="tech-tag">HTML/CSS</span>
@@ -869,16 +905,16 @@
   <!-- Contact Section -->
   <section class="section contact" id="contact">
     <div class="container">
-      <h2 class="section-title" style="color: white;">Contactez-moi</h2>
+      <h2 class="section-title" style="color: white;" data-i18n="contact.title">Contactez-moi</h2>
       <div class="contact-content">
         <div class="contact-info">
-          <h3>Restons en contact</h3>
-          <p>N'hésitez pas à me contacter pour discuter de vos projets ou opportunités de collaboration.</p>
+          <h3 data-i18n="contact.subtitle">Restons en contact</h3>
+          <p data-i18n="contact.text">N'hésitez pas à me contacter pour discuter de vos projets ou opportunités de collaboration.</p>
           
           <div class="contact-item">
             <div class="contact-icon">📧</div>
             <div>
-              <strong>Email</strong><br>
+              <strong data-i18n="contact.email">Email</strong><br>
               <a href="mailto:tomzonirina@gmail.com" style="color: var(--accent-color);">tomzonirina@gmail.com</a>
             </div>
           </div>
@@ -886,7 +922,7 @@
           <div class="contact-item">
             <div class="contact-icon">📱</div>
             <div>
-              <strong>Téléphone</strong><br>
+              <strong data-i18n="contact.phone">Téléphone</strong><br>
               +261 32 97 193 91
             </div>
           </div>
@@ -902,7 +938,7 @@
           <div class="contact-item">
             <div class="contact-icon">📍</div>
             <div>
-              <strong>Localisation</strong><br>
+              <strong data-i18n="contact.location">Localisation</strong><br>
               Mahajanga, Madagascar
             </div>
           </div>
@@ -911,26 +947,26 @@
         <div class="contact-form">
           <form>
             <div class="form-group">
-              <label for="name">Nom</label>
-              <input type="text" id="name" name="name" placeholder="Votre nom">
+              <label for="name" data-i18n="contact.form.name">Nom</label>
+              <input type="text" id="name" name="name" data-i18n-placeholder="contact.form.placeholder.name" placeholder="Votre nom">
             </div>
             
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="votre@email.com">
+              <label for="email" data-i18n="contact.form.email">Email</label>
+              <input type="email" id="email" name="email" data-i18n-placeholder="contact.form.placeholder.email" placeholder="votre@email.com">
             </div>
             
             <div class="form-group">
-              <label for="subject">Sujet</label>
-              <input type="text" id="subject" name="subject" placeholder="Sujet de votre message">
+              <label for="subject" data-i18n="contact.form.subject">Sujet</label>
+              <input type="text" id="subject" name="subject" data-i18n-placeholder="contact.form.placeholder.subject" placeholder="Sujet de votre message">
             </div>
             
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Votre message..."></textarea>
+              <label for="message" data-i18n="contact.form.message">Message</label>
+              <textarea id="message" name="message" rows="5" data-i18n-placeholder="contact.form.placeholder.message" placeholder="Votre message..."></textarea>
             </div>
             
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le message</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="contact.form.submit">Envoyer le message</button>
           </form>
         </div>
       </div>
@@ -940,8 +976,8 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Zo Nirina Rakotomanana. Tous droits réservés.</p>
-      <p>Développé avec ❤️ à Mahajanga, Madagascar</p>
+      <p data-i18n="footer.rights">&copy; 2025 Zo Nirina Rakotomanana. Tous droits réservés.</p>
+      <p data-i18n="footer.developed">Développé avec ❤️ à Mahajanga, Madagascar</p>
     </div>
   </footer>
 
@@ -953,6 +989,240 @@
     (function(){
       emailjs.init("VhvZGv99S_WSeqMb8"); // Replace with your EmailJS public key
     })();
+    
+    // Language translations
+    const translations = {
+      'fr': {
+        'nav.home': 'Accueil',
+        'nav.about': 'À propos',
+        'nav.skills': 'Compétences',
+        'nav.experience': 'Expérience',
+        'nav.projects': 'Projets',
+        'nav.contact': 'Contact',
+        'hero.subtitle': 'Développeur Front End & Web Designer',
+        'hero.description': 'Passionné par la création d\'expériences web modernes et esthétiques. 4 ans d\'expérience dans le développement d\'applications performantes et responsives.',
+        'hero.cta.projects': 'Voir mes projets',
+        'hero.cta.contact': 'Me contacter',
+        'about.title': 'À propos de moi',
+        'about.text1': 'Développeur Front End et Web Designer passionné avec 4 ans d\'expérience dans la création d\'applications web modernes, performantes et esthétiques.',
+        'about.text2': 'Toujours à la pointe des nouvelles tendances en matière de design et de technologies web, je relève avec enthousiasme les défis créatifs et techniques.',
+        'stats.years': 'Années d\'expérience',
+        'stats.projects': 'Projets réalisés',
+        'stats.satisfaction': 'Satisfaction client',
+        'stats.support': 'Support',
+        'skills.title': 'Compétences',
+        'skills.soft.title': 'Soft Skills',
+        'skills.soft.autonomy': 'Autonomie',
+        'skills.soft.timeManagement': 'Gestion du temps',
+        'skills.soft.communication': 'Communication',
+        'skills.soft.teamwork': 'Travail d\'équipe',
+        'skills.soft.problemSolving': 'Problem Solving',
+        'skills.tools.title': 'Outils & Technologies',
+        'experience.title': 'Expérience Professionnelle',
+        'experience.job1.date': 'Juin 2025 - Aujourd\'hui',
+        'experience.job1.title': 'Apprenti Web Designer',
+        'experience.job1.company': 'Madagasy.com, Mahajanga',
+        'experience.job1.description': 'Conception de templates modernes et responsives, formation en gestion de la relation client et stratégies commerciales, participation au développement commercial.',
+        'experience.job2.date': 'Mars 2024 - Juin 2025',
+        'experience.job2.title': 'Développeur Front End',
+        'experience.job2.company': 'Fy-Tech Mahajanga',
+        'experience.job2.description': 'Développement et optimisation de sites web, formation de jeunes sur les métiers numériques, animation d\'événements technologiques.',
+        'experience.job3.date': 'Sept - Oct 2024',
+        'experience.job3.title': 'Développeur Front End',
+        'experience.job3.company': 'Eli, Italie (Freelance)',
+        'experience.job3.description': 'Développement d\'interfaces responsives, optimisation du design et débogage pour un client international.',
+        'experience.job4.date': 'Août - Sept 2023',
+        'experience.job4.title': 'Développeur Front End',
+        'experience.job4.company': 'ANIMA TECHNOLOGIE',
+        'experience.job4.description': 'Développement d\'un site catalogue responsive avec React, optimisation de l\'expérience utilisateur.',
+        'projects.title': 'Projets Récents',
+        'projects.project1.title': 'Site Catalogue E-commerce',
+        'projects.project1.description': 'Développement d\'un site catalogue responsive pour ANIMA TECHNOLOGIE avec une interface moderne et intuitive.',
+        'projects.project2.title': 'Interface Client International',
+        'projects.project2.description': 'Création d\'interfaces responsives pour un client italien avec focus sur l\'optimisation et le débogage.',
+        'projects.project3.title': 'Templates Modernes',
+        'projects.project3.description': 'Conception et développement de templates responsives modernes pour différents secteurs d\'activité.',
+        'contact.title': 'Contactez-moi',
+        'contact.subtitle': 'Restons en contact',
+        'contact.text': 'N\'hésitez pas à me contacter pour discuter de vos projets ou opportunités de collaboration.',
+        'contact.email': 'Email',
+        'contact.phone': 'Téléphone',
+        'contact.location': 'Localisation',
+        'contact.form.name': 'Nom',
+        'contact.form.email': 'Email',
+        'contact.form.subject': 'Sujet',
+        'contact.form.message': 'Message',
+        'contact.form.submit': 'Envoyer le message',
+        'contact.form.placeholder.name': 'Votre nom',
+        'contact.form.placeholder.email': 'votre@email.com',
+        'contact.form.placeholder.subject': 'Sujet de votre message',
+        'contact.form.placeholder.message': 'Votre message...',
+        'footer.rights': '© 2025 Zo Nirina Rakotomanana. Tous droits réservés.',
+        'footer.developed': 'Développé avec ❤️ à Mahajanga, Madagascar',
+        'notification.fillFields': 'Veuillez remplir tous les champs.',
+        'notification.validEmail': 'Veuillez entrer une adresse email valide.',
+        'notification.sending': 'Envoi en cours...',
+        'notification.success': 'Message envoyé avec succès ! Je vous répondrai bientôt.',
+        'notification.error': 'Erreur lors de l\'envoi. Veuillez réessayer ou me contacter directement.'
+      },
+      'en': {
+        'nav.home': 'Home',
+        'nav.about': 'About',
+        'nav.skills': 'Skills',
+        'nav.experience': 'Experience',
+        'nav.projects': 'Projects',
+        'nav.contact': 'Contact',
+        'hero.subtitle': 'Front End Developer & Web Designer',
+        'hero.description': 'Passionate about creating modern and aesthetic web experiences. 4 years of experience in developing high-performance and responsive applications.',
+        'hero.cta.projects': 'View my projects',
+        'hero.cta.contact': 'Contact me',
+        'about.title': 'About me',
+        'about.text1': 'Passionate Front End Developer and Web Designer with 4 years of experience in creating modern, high-performance, and aesthetic web applications.',
+        'about.text2': 'Always at the forefront of new trends in design and web technologies, I enthusiastically take on creative and technical challenges.',
+        'stats.years': 'Years of experience',
+        'stats.projects': 'Projects completed',
+        'stats.satisfaction': 'Client satisfaction',
+        'stats.support': 'Support',
+        'skills.title': 'Skills',
+        'skills.soft.title': 'Soft Skills',
+        'skills.soft.autonomy': 'Autonomy',
+        'skills.soft.timeManagement': 'Time Management',
+        'skills.soft.communication': 'Communication',
+        'skills.soft.teamwork': 'Teamwork',
+        'skills.soft.problemSolving': 'Problem Solving',
+        'skills.tools.title': 'Tools & Technologies',
+        'experience.title': 'Professional Experience',
+        'experience.job1.date': 'June 2025 - Present',
+        'experience.job1.title': 'Web Designer Apprentice',
+        'experience.job1.company': 'Madagasy.com, Mahajanga',
+        'experience.job1.description': 'Design of modern and responsive templates, training in customer relationship management and business strategies, participation in business development.',
+        'experience.job2.date': 'March 2024 - June 2025',
+        'experience.job2.title': 'Front End Developer',
+        'experience.job2.company': 'Fy-Tech Mahajanga',
+        'experience.job2.description': 'Development and optimization of websites, training young people in digital professions, hosting technological events.',
+        'experience.job3.date': 'Sept - Oct 2024',
+        'experience.job3.title': 'Front End Developer',
+        'experience.job3.company': 'Eli, Italy (Freelance)',
+        'experience.job3.description': 'Development of responsive interfaces, design optimization and debugging for an international client.',
+        'experience.job4.date': 'Aug - Sept 2023',
+        'experience.job4.title': 'Front End Developer',
+        'experience.job4.company': 'ANIMA TECHNOLOGIE',
+        'experience.job4.description': 'Development of a responsive catalog website with React, optimization of user experience.',
+        'projects.title': 'Recent Projects',
+        'projects.project1.title': 'E-commerce Catalog Website',
+        'projects.project1.description': 'Development of a responsive catalog website for ANIMA TECHNOLOGIE with a modern and intuitive interface.',
+        'projects.project2.title': 'International Client Interface',
+        'projects.project2.description': 'Creation of responsive interfaces for an Italian client with a focus on optimization and debugging.',
+        'projects.project3.title': 'Modern Templates',
+        'projects.project3.description': 'Design and development of modern responsive templates for different business sectors.',
+        'contact.title': 'Contact Me',
+        'contact.subtitle': 'Let\'s stay in touch',
+        'contact.text': 'Feel free to contact me to discuss your projects or collaboration opportunities.',
+        'contact.email': 'Email',
+        'contact.phone': 'Phone',
+        'contact.location': 'Location',
+        'contact.form.name': 'Name',
+        'contact.form.email': 'Email',
+        'contact.form.subject': 'Subject',
+        'contact.form.message': 'Message',
+        'contact.form.submit': 'Send message',
+        'contact.form.placeholder.name': 'Your name',
+        'contact.form.placeholder.email': 'your@email.com',
+        'contact.form.placeholder.subject': 'Subject of your message',
+        'contact.form.placeholder.message': 'Your message...',
+        'footer.rights': '© 2025 Zo Nirina Rakotomanana. All rights reserved.',
+        'footer.developed': 'Developed with ❤️ in Mahajanga, Madagascar',
+        'notification.fillFields': 'Please fill in all fields.',
+        'notification.validEmail': 'Please enter a valid email address.',
+        'notification.sending': 'Sending...',
+        'notification.success': 'Message sent successfully! I will reply soon.',
+        'notification.error': 'Error sending message. Please try again or contact me directly.'
+      }
+    };
+    
+    // Initialize language from localStorage or default to French
+    let currentLang = localStorage.getItem('portfolioLanguage') || 'fr';
+    const langToggleBtn = document.getElementById('langToggle');
+    
+    // Set initial button text based on current language
+    langToggleBtn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+    
+    // Set the html lang attribute
+    document.documentElement.lang = currentLang;
+    
+    // Apply translations on page load
+    applyTranslations();
+    
+    // Add event listener to language toggle button
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      langToggleBtn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+      document.documentElement.lang = currentLang;
+      localStorage.setItem('portfolioLanguage', currentLang);
+      applyTranslations();
+    });
+    
+    // Function to apply translations
+    function applyTranslations() {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          // Handle different element types
+          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            if (key.includes('placeholder')) {
+              element.placeholder = translations[currentLang][key];
+            } else {
+              element.value = translations[currentLang][key];
+            }
+          } else {
+            element.innerHTML = translations[currentLang][key];
+          }
+        }
+      });
+      
+      // Handle placeholders separately
+      const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+      placeholderElements.forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[currentLang][key]) {
+          element.placeholder = translations[currentLang][key];
+        }
+      });
+      
+      // Update hero section content
+      document.querySelector('.hero h1').textContent = 'Rakotomanana Zo Nirina';
+      document.querySelector('.hero .subtitle').textContent = translations[currentLang]['hero.subtitle'];
+      document.querySelector('.hero .description').textContent = translations[currentLang]['hero.description'];
+      document.querySelector('.btn-primary').textContent = translations[currentLang]['hero.cta.projects'];
+      document.querySelector('.btn-secondary').textContent = translations[currentLang]['hero.cta.contact'];
+      
+      // Update notification messages
+      updateNotificationMessages();
+      
+      // Update form validation messages
+      const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.textContent = translations[currentLang]['contact.form.submit'];
+      }
+    }
+    
+    // Update notification messages based on current language
+    function updateNotificationMessages() {
+      // This function will be called when language changes
+      // to ensure that any new notifications use the correct language
+    }
+    
+    // Override the showNotification function to use translations
+    const originalShowNotification = showNotification;
+    showNotification = function(messageKey, type = 'info') {
+      let message = messageKey;
+      // Check if the message is a translation key
+      if (translations[currentLang][messageKey]) {
+        message = translations[currentLang][messageKey];
+      }
+      originalShowNotification(message, type);
+    };
 
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
@@ -1010,21 +1280,21 @@
       
       // Simple validation
       if (!name || !email || !subject || !message) {
-        showNotification('Veuillez remplir tous les champs.', 'error');
+        showNotification('notification.fillFields', 'error');
         return;
       }
       
       // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        showNotification('Veuillez entrer une adresse email valide.', 'error');
+        showNotification('notification.validEmail', 'error');
         return;
       }
       
       // Show loading state
       const submitBtn = this.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Envoi en cours...';
+      submitBtn.textContent = translations[currentLang]['notification.sending'];
       submitBtn.disabled = true;
       
       // Prepare template parameters
@@ -1040,17 +1310,17 @@
       emailjs.send('service_9pwicrm', 'template_l8ycri6', templateParams)
         .then(function(response) {
           console.log('SUCCESS!', response.status, response.text);
-          showNotification('Message envoyé avec succès ! Je vous répondrai bientôt.', 'success');
+          showNotification('notification.success', 'success');
           
           // Reset form
           document.querySelector('.contact-form form').reset();
         })
         .catch(function(error) {
           console.log('FAILED...', error);
-          showNotification('Erreur lors de l\'envoi. Veuillez réessayer ou me contacter directement.', 'error');
+          showNotification('notification.error', 'error');
           
           // Fallback to mailto
-          const mailtoLink = `mailto:tomzonirina@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+          const mailtoLink = `mailto:tomzonirina@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;  
           window.location.href = mailtoLink;
         })
         .finally(function() {
