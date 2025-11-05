@@ -49,7 +49,63 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+  
+  /* Hamburger Button */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 1rem;
+  }
 
+  .hamburger span {
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile Navigation */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed; top: 70px; /* Fixed height instead of var */ left: 0; right: 0; background: rgba(249, 250, 251, 0.98); padding: 2rem; flex-direction: column; align-items: center; display: flex !important; /* Important to override desktop display */ gap: 0.5rem; transform: translateX(-100%); transition: transform 0.3s ease; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); z-index: 999; 
+    }
+
+    .nav-links.active {
+      transform: translateX(0);
+    }
+    .nav-links li {
+      width: 100%;
+      text-align: center;
+    }
+    .nav-links a {
+      display: block;
+      padding: 1rem;
+      width: 100%;
+    }
+    /* Hamburger Animation */
+    .hamburger.active span:first-child {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:last-child {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
     /* Navigation */
     .navbar {
       position: fixed;
@@ -81,7 +137,10 @@
       font-weight: bold;
       color: var(--primary-color);
     }
-
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
     .nav-links {
       display: flex;
       list-style: none;
@@ -681,6 +740,12 @@
     <div class="nav-container">
       <div class="logo">ZN</div>
       <div class="nav-right">
+        <!-- Add hamburger button -->
+        <button class="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <ul class="nav-links">
           <li><a href="#home" data-i18n="nav.home">Accueil</a></li>
           <li><a href="#about" data-i18n="nav.about">À propos</a></li>
@@ -689,8 +754,9 @@
           <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
           <li><a href="https://zonirina.tawk.help/article/skill-of-zo-nirina">Support</a></li>
-          <button class="lang-toggle" id="langToggle">EN</button>
+          
         </ul>
+        <button class="lang-toggle" id="langToggle">EN</button>
       </div>
     </div>
   </nav>
@@ -989,7 +1055,32 @@
     (function(){
       emailjs.init("VhvZGv99S_WSeqMb8"); // Replace with your EmailJS public key
     })();
-    
+  
+  // Mobile Navigation Toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const navLinksItems = document.querySelectorAll('.nav-links a');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Close mobile menu when clicking a link
+  navLinksItems.forEach(item => {
+    item.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+  });
     // Language translations
     const translations = {
       'fr': {
