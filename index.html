@@ -14,6 +14,28 @@
       --dark-bg: #1f2937;
       --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --gradient: linear-gradient(135deg, #0d9488 0%, #22d3ee 100%);
+      
+      /* Theme Variables */
+      --bg-body: var(--secondary-color);
+      --bg-card: white;
+      --bg-nav: rgba(249, 250, 251, 0.95);
+      --bg-nav-scrolled: rgba(249, 250, 251, 0.98);
+      --text-muted: #6b7280;
+    }
+
+    [data-theme="dark"] {
+      --primary-color: #2dd4bf;
+      --secondary-color: #111827;
+      --text-color: #f9fafb;
+      --accent-color: #67e8f9;
+      --dark-bg: #0f172a;
+      --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+      
+      --bg-body: #111827;
+      --bg-card: #1f2937;
+      --bg-nav: rgba(17, 24, 39, 0.95);
+      --bg-nav-scrolled: rgba(17, 24, 39, 0.98);
+      --text-muted: #9ca3af;
     }
     
     /* Language Toggle Button */
@@ -36,6 +58,30 @@
       transform: translateY(-2px);
     }
 
+    /* Theme Toggle Button */
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+      margin-left: 1rem;
+    }
+    
+    .theme-toggle:hover {
+      color: var(--primary-color);
+    }
+
+    .sun-icon { display: none; }
+    .moon-icon { display: block; }
+
+    [data-theme="dark"] .sun-icon { display: block; }
+    [data-theme="dark"] .moon-icon { display: none; }
+
     * {
       margin: 0;
       padding: 0;
@@ -44,10 +90,11 @@
 
     body {
       font-family: 'Inter', 'Helvetica Neue', sans-serif;
-      background-color: var(--secondary-color);
+      background-color: var(--bg-body);
       color: var(--text-color);
       line-height: 1.6;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
   
   /* Hamburger Button */
@@ -78,7 +125,7 @@
     }
 
     .nav-links {
-      position: fixed; top: 70px; /* Fixed height instead of var */ left: 0; right: 0; background: rgba(249, 250, 251, 0.98); padding: 2rem; flex-direction: column; align-items: center; display: flex !important; /* Important to override desktop display */ gap: 0.5rem; transform: translateX(-100%); transition: transform 0.3s ease; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); z-index: 999; 
+      position: fixed; top: 70px; /* Fixed height instead of var */ left: 0; right: 0; background: var(--bg-nav-scrolled); padding: 2rem; flex-direction: column; align-items: center; display: flex !important; /* Important to override desktop display */ gap: 0.5rem; transform: translateX(-100%); transition: transform 0.3s ease; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); z-index: 999; 
     }
 
     .nav-links.active {
@@ -111,7 +158,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(249, 250, 251, 0.95);
+      background: var(--bg-nav);
       backdrop-filter: blur(10px);
       z-index: 1000;
       padding: 1rem 0;
@@ -119,7 +166,7 @@
     }
 
     .navbar.scrolled {
-      background: rgba(249, 250, 251, 0.98);
+      background: var(--bg-nav-scrolled);
       box-shadow: var(--card-shadow);
     }
 
@@ -224,6 +271,11 @@
       top: 0;
       left: 0;
       background-color: rgba(0, 0, 0, 0.15);
+      transition: background-color 0.3s ease;
+    }
+
+    [data-theme="dark"] .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     .hero .description {
@@ -304,7 +356,7 @@
 
     /* About Section */
     .about {
-      background: white;
+      background: var(--bg-card);
     }
 
     .about-content {
@@ -316,7 +368,7 @@
 
     .about-text {
       font-size: 1.1rem;
-      color: #6b7280;
+      color: var(--text-muted);
     }
 
     .stats {
@@ -365,7 +417,7 @@
     }
 
     .skill-category {
-      background: white;
+      background: var(--bg-card);
       padding: 2rem;
       border-radius: 15px;
       box-shadow: var(--card-shadow);
@@ -401,7 +453,7 @@
 
     /* Experience Section */
     .experience {
-      background: white;
+      background: var(--bg-card);
     }
 
     .timeline {
@@ -446,7 +498,7 @@
     }
 
     .timeline-content {
-      background: white;
+      background: var(--bg-card);
       padding: 2rem;
       border-radius: 15px;
       box-shadow: var(--card-shadow);
@@ -471,12 +523,12 @@
     }
 
     .timeline-company {
-      color: #6b7280;
+      color: var(--text-muted);
       margin-bottom: 1rem;
     }
 
     .timeline-description {
-      color: #6b7280;
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
@@ -492,7 +544,7 @@
     }
 
     .project-card {
-      background: white;
+      background: var(--bg-card);
       border-radius: 15px;
       overflow: hidden;
       box-shadow: var(--card-shadow);
@@ -766,6 +818,10 @@
           
         </ul>
         <button class="lang-toggle" id="langToggle">EN</button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
       </div>
     </div>
   </nav>
@@ -1647,5 +1703,27 @@
     })();
   </script>
 <!--End of Tawk.to Script-->
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Check for saved preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+    } else {
+      html.setAttribute('data-theme', systemTheme);
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
 </body>
 </html>
